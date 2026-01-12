@@ -1,8 +1,11 @@
-// your JS code here. If required.
-const sizeInfo = document.getElementById("sizeInfo");
+const sizeInfo = document.querySelector("#sizeInfo h1");
 
-sizeInfo.innerHTML = `<h1>Width: ${window.innerWidth} and Height: ${window.innerHeight}</h1>`;
+function updateWindowSize() {
+  sizeInfo.textContent = `Width: ${window.innerWidth} and Height: ${window.innerHeight}`;
+}
 
-window.addEventListener('resize', () => {
-  sizeInfo.innerHTML = `<h1>Width: ${window.innerWidth} and Height: ${window.innerHeight}</h1>`;
-});
+// Initial render (critical for Cypress)
+updateWindowSize();
+
+// Resize listener
+window.addEventListener("resize", updateWindowSize);
